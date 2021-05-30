@@ -1,0 +1,19 @@
+
+.ant-layout-header,
+.ant-layout-footer {
+  color: #fff;
+  background: #7dbcea;
+}
+.ant-layout-footer {
+  line-height: 1.5;
+}
+.ant-layout-sider {
+  color: #fff;
+  line-height: 120px;
+  background: #ffffff;
+}.ant-layout-content {
+  min-height: 120px;
+  color: #fff;
+  line-height: 120px;
+  background: rgb(190, 190, 190);
+}

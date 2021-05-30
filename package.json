@@ -1,0 +1,63 @@
+{
+  "name": "netdisk-ipfs",
+  "version": "1.0.0",
+  "description": "using electron based on js-ipfs-http-client",
+  "main": "main.js",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:fredyvia/netdisk-ipfs.git"
+  },
+  "keywords": [
+    "netdisk",
+    "ipfs"
+  ],
+  "author": "FredyVia",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "concurrently": "^6.0.2",
+    "cross-env": "^7.0.3",
+    "electron": "^9.0.0",
+    "electron-builder": "^22.10.5",
+    "react-scripts": "^4.0.3",
+    "wait-on": "^5.3.0"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@chatui/core": "^0.3.2",
+    "antd": "^4.15.1",
+    "electron-is-dev": "^2.0.0",
+    "electron-log": "^4.3.4",
+    "file-encryptor": "^0.1.1",
+    "ipfs-http-client": "^49.0.4",
+    "it-pipe": "^1.1.0",
+    "orbit-db": "^0.26.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "update-electron-app": "^2.0.1",
+    "web-vitals": "^1.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
