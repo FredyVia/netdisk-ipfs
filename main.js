@@ -85,7 +85,7 @@ class Utils {
         key: fileAbsolutePath,
       }
       if (file.type === 'directory') {
-        let tmp = (await ls_r(ipfs, fileAbsolutePath + '/'))
+        let tmp = (await Utils.ls_r(ipfs, fileAbsolutePath + '/'))
         fileItem['isLeaf'] = false;
         fileItem['children'] = tmp.slice();
       } else {
@@ -219,7 +219,7 @@ class Backend {
       console.log('openDialog-request')
       console.log(destFile)
       dialog.showOpenDialog({
-        properties: ['openFile', 'multiSelections', 'createDirectory'],
+        properties: ['openFile','openDirectory', 'multiSelections', 'createDirectory'],
         message: "choose the files upload to ipfs"
       }).then(result => {
         console.log(result.canceled);
@@ -472,12 +472,16 @@ class Chat {
       // JSON.parse(json_arg);
       console.log('前端发回的好友同意与否', json_arg)
       if (json_arg.type == true) {
+        console.log(json_arg.type)
+        console.log(_this.username,json_arg.friendName,)
         var friendshipDatabase = await _this.orbitdb.log('NetDisk-PrivateDatabase-FriendShip-' + _this.username + '-' + json_arg.friendName, {
           // Give write access to everyone
           accessController: {
             write: ['*']
           }
         })
+        console.log('总是建立不了数据库')
+
         // this.friendshipDatabases[json_arg.friendName] = friendshipDatabase;
         console.log(friendshipDatabase.address.toString());
         // friendshipDatabase.close()
@@ -487,6 +491,7 @@ class Chat {
           console.log("sync from others: \n", friendshipDatabase.address.toString(), "\n");
           // await pipe(..._pipe);
           // callback(db.all);
+          mainWindow.webContents.send('friendshipDatabase-response',this.getHistoryRecord(friendName))
         })
         // } catch (e) {
         //   console.log('已经订阅过了')
